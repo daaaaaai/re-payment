@@ -1,0 +1,30 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  
+  dependencies {
+    classpath "net.saliman:gradle-cobertura-plugin:2.0.0"
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'cobertura'
+apply plugin: 'eclipse'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.8'
+}
+
+task execJava(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = "Sample"
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.10'
+}
